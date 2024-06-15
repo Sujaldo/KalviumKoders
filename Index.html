@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalvium Koders</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 800% 800%;
+            animation: gradientAnimation 15s ease infinite;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 4px red;
+            top: 0;
+            position: absolute;
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        h4 {
+            text-align: center;
+            font-size: 30px;
+            top: 60px;
+            position: absolute;
+            padding: 10px 0;
+            margin: 0;
+            text-shadow:
+                -1px -1px 0 white,
+                1px -1px 0 white,
+                -1px 1px 0 white,
+                1px 1px 0 white;
+            margin-top: 0;
+        }
+
+        .white-box {
+            width: 60%;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            height: 35%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .newwhite-box {
+            width: 57%;
+            background-color: white;
+            height: 40%;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: relative;
+            padding: 20px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .grey-border-box {
+            width: 90%;
+            background-color: transparent;
+            height: 35%;
+            border: 1px solid grey;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 0;
+            overflow-y: auto;
+        }
+
+        .grey-border-box textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: black;
+            resize: none;
+            background-color: transparent;
+        }
+
+        .question-text {
+            position: absolute;
+            top: 10px;
+            left: 40px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .green-box {
+            bottom: 10px;
+            position: absolute;
+            right: 40px;
+            width: 130px;
+            height: 40px;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .green-box span {
+            color: white;
+            font-family: Arial, Sans-serif;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .recently-asked-text {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: 0;
+            left: 40px;
+            position: relative;
+        }
+
+        .hamburger-menu {
+            width: 30px;
+            height: 25px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger-menu .line {
+            width: 100%;
+            height: 4px;
+            background-color: white;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .menu {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu ul li {
+            margin: 10px 0;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .menu-overlay.visible {
+            display: flex;
+            pointer-events: auto;
+        }
+
+        .green-box:hover {
+            background-color: darkgreen;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+            h4 {
+                font-size: 24px;
+            }
+            .white-box {
+                width: 60%;
+            }
+            .grey-border-box textarea {
+                height: 150px;
+            }
+            .green-box {
+                width: 150px;
+                height: 50px;
+            }
+            .green-box span {
+                font-size: 16px;
+            }
+            .recently-asked-text {
+                font-size: 24px;
+            }
+            .menu {
+                padding: 30px;
+            }
+            .menu ul li a {
+                font-size: 18px;
+            }
+        }
+
+        ul.questions-list {
+            list-style-type: disc;
+            margin-left: 20px;
+        }           
+    </style>
+</head>
+<body>
+    <h1>Kalvium Koders</h1>
+    <h4>Q&A Forum</h4>
+    <div class="white-box">
+        <p class="question-text">Ask Your Question!</p>
+        <div class="grey-border-box">
+            <textarea id="questionInput" placeholder="Type your question here..."></textarea>
+        </div>
+        <div id="submitQuestion" class="green-box"><span>Submit</span></div>
+    </div>
+    <div class="newwhite-box">
+        <p class="recently-asked-text">Recently Asked</p>
+        <ul id="questionsList" class="questions-list"></ul>
+    </div>
+    <div class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <div class="menu-overlay">
+        <div class="menu">
+            <ul>
+                <li><a href="Profile.html">My Profile</a></li>
+                <li><a href="#">My Friends</a></li>
+                <li><a href="#">My Groups</a></li>
+                <li><a href="#">Study Materials</a></li>
+                <li><a href="#">Give Feedback</a></li>
+                <li><a href="#">Settings</a></li> <!-- Corrected closing tag here -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menu = document.querySelector('.menu');
+        const submitQuestionBtn = document.getElementById('submitQuestion');
+        const questionInput = document.getElementById('questionInput');
+        const questionsList = document.getElementById('questionsList');
+
+        hamburgerMenu.addEventListener('click', () => {
+            menuOverlay.classList.toggle('visible');
+        });
+
+        menuOverlay.addEventListener('click', (event) => {
+            if (!menu.contains(event.target)) {
+                menuOverlay.classList.remove('visible');
+            }
+        });
+
+        function loadQuestions() {
+            const questions = JSON.parse(localStorage.getItem('questions')) || [];
+            questionsList.innerHTML = '';
+            questions.reverse().forEach(question => {
+                const li = document.createElement('li');
+                li.textContent = question;
+                questionsList.appendChild(li);
+            });
+        }
+
+        function saveQuestion(question) {
+            const questions = JSON.parse(localStorage.getItem('questions')) || [];
+            questions.push(question);
+            localStorage.setItem('questions', JSON.stringify(questions));
+            loadQuestions();
+        }
+
+        submitQuestionBtn.addEventListener('click', () => {
+            const question = questionInput.value.trim();
+            if (question) {
+                saveQuestion(question);
+                questionInput.value = '';
+            }
+        });
+
+        loadQuestions();
+    </script>
+</body>
+</html>
+
